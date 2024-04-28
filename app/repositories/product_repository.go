@@ -21,7 +21,7 @@ func (r *productRepository) GetProduct(ctx context.Context, filter models.GetPro
 
 	offset := (filter.Page - 1) * filter.Limit
 
-	query := r.Options.Postgres.Table("products").Select("products.*, shops.name AS shop, SUM(stocks.quantity) AS total_stocks").Joins("JOIN shops ON products.shop_id = shops.shop_id").Joins("JOIN stocks ON products.product_id = stocks.product_id").Group("products.product_id, shops.name").Order("products.name")
+	query := r.Options.Postgres.Table("products").Select("products.*, shops.name AS shop, COALESCE(SUM(stocks.quantity),0) - COALESCE(SUM(reserved_stock.reserved_quantity),0) AS available_stock").Joins("JOIN shops ON products.shop_id = shops.shop_id").Joins("JOIN stocks ON products.product_id = stocks.product_id").Joins("LEFT JOIN reserved_stock ON products.product_id = reserved_stock.product_id").Group("products.product_id, shops.name").Order("products.name")
 
 	if filter.Name != "" {
 		query = query.Where("products.name ILIKE ?", "%"+filter.Name+"%")
