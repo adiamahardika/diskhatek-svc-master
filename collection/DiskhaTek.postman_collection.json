@@ -1,0 +1,749 @@
+{
+	"info": {
+		"_postman_id": "803de080-0523-43d2-b571-f4d2ce36eb76",
+		"name": "DiskhaTek",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17805660"
+	},
+	"item": [
+		{
+			"name": "svc-master",
+			"item": [
+				{
+					"name": "shop",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWduYXR1cmVfa2V5IjoiZTM5NDlmMjA0MWYyZGEyOWY5NzhjYmJmMDA5Y2NkODciLCJ1c2VybmFtZSI6IiIsImJyYW5jaEtleSI6IiIsImV4cCI6MTcxNDMyNjI2M30.0suiaTTRAt9dLdPw27AUsZYKjKNlYYsz2ebB27nkyiA",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/v1/shop",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"shop"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "B",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWduYXR1cmVfa2V5IjoiZTM5NDlmMjA0MWYyZGEyOWY5NzhjYmJmMDA5Y2NkODciLCJ1c2VybmFtZSI6IiIsImJyYW5jaEtleSI6IiIsImV4cCI6MTcxNDMyNjI2M30.0suiaTTRAt9dLdPw27AUsZYKjKNlYYsz2ebB27nkyiA",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/v1/shop?limit=1&page=1&name=B",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"v1",
+												"shop"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "name",
+													"value": "B"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\r\n    \"status_code\": 200,\r\n    \"message\": [\r\n        \"Success\"\r\n    ],\r\n    \"data\": [\r\n        {\r\n            \"shop_id\": 2,\r\n            \"name\": \"Shop B\",\r\n            \"created_at\": \"2024-04-28T11:03:08.206382Z\",\r\n            \"updated_at\": \"2024-04-28T11:03:08.209449Z\"\r\n        }\r\n    ],\r\n    \"pagination\": {\r\n        \"page\": 1,\r\n        \"page_size\": 1,\r\n        \"total\": 1,\r\n        \"total_page\": 1\r\n    }\r\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "warehouse",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWduYXR1cmVfa2V5IjoiZTM5NDlmMjA0MWYyZGEyOWY5NzhjYmJmMDA5Y2NkODciLCJ1c2VybmFtZSI6IiIsImJyYW5jaEtleSI6IiIsImV4cCI6MTcxNDMyNzM3M30.2RlS-E2rolgpo8dnRXe9uAsfcJ5KzwLZmGexO32krtM",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/v1/warehouse",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"warehouse"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Horizon",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "false",
+											"disabled": true
+										},
+										{
+											"key": "shop_id",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWduYXR1cmVfa2V5IjoiZTM5NDlmMjA0MWYyZGEyOWY5NzhjYmJmMDA5Y2NkODciLCJ1c2VybmFtZSI6IiIsImJyYW5jaEtleSI6IiIsImV4cCI6MTcxNDMyNjI2M30.0suiaTTRAt9dLdPw27AUsZYKjKNlYYsz2ebB27nkyiA",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/v1/warehouse?shop_id=1",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"v1",
+												"warehouse"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "1",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": "1",
+													"disabled": true
+												},
+												{
+													"key": "name",
+													"value": "Horizon",
+													"disabled": true
+												},
+												{
+													"key": "status",
+													"value": "false",
+													"disabled": true
+												},
+												{
+													"key": "shop_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\r\n    \"status_code\": 200,\r\n    \"message\": [\r\n        \"Success\"\r\n    ],\r\n    \"data\": [\r\n        {\r\n            \"warehouse_id\": 3,\r\n            \"name\": \"Horizon Heights Warehousing\",\r\n            \"shop_id\": 1,\r\n            \"shop\": \"Mystic Emporium\",\r\n            \"status\": true,\r\n            \"created_at\": \"2024-04-28T06:10:08.765154Z\",\r\n            \"updated_at\": \"2024-04-28T06:10:08.765154Z\"\r\n        },\r\n        {\r\n            \"warehouse_id\": 5,\r\n            \"name\": \"Quantum Cargo Center\",\r\n            \"shop_id\": 1,\r\n            \"shop\": \"Mystic Emporium\",\r\n            \"status\": true,\r\n            \"created_at\": \"2024-04-28T06:10:08.765154Z\",\r\n            \"updated_at\": \"2024-04-28T06:10:08.765154Z\"\r\n        },\r\n        {\r\n            \"warehouse_id\": 1,\r\n            \"name\": \"SkyVault Storage Solutions\",\r\n            \"shop_id\": 1,\r\n            \"shop\": \"Mystic Emporium\",\r\n            \"status\": true,\r\n            \"created_at\": \"2024-04-28T06:10:08.765154Z\",\r\n            \"updated_at\": \"2024-04-28T06:10:08.765154Z\"\r\n        }\r\n    ],\r\n    \"pagination\": {\r\n        \"page\": 1,\r\n        \"page_size\": 10,\r\n        \"total\": 3,\r\n        \"total_page\": 1\r\n    }\r\n}"
+								}
+							]
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWduYXR1cmVfa2V5IjoiZTM5NDlmMjA0MWYyZGEyOWY5NzhjYmJmMDA5Y2NkODciLCJ1c2VybmFtZSI6IiIsImJyYW5jaEtleSI6IiIsImV4cCI6MTcxNDMyNjI2M30.0suiaTTRAt9dLdPw27AUsZYKjKNlYYsz2ebB27nkyiA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Apex Depot\",\r\n    \"shop_id\": 2,\r\n    \"shop\": \"Twilight Treasures\",\r\n    \"status\": \"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/warehouse/4",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"warehouse",
+										"4"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWduYXR1cmVfa2V5IjoiZTM5NDlmMjA0MWYyZGEyOWY5NzhjYmJmMDA5Y2NkODciLCJ1c2VybmFtZSI6IiIsImJyYW5jaEtleSI6IiIsImV4cCI6MTcxNDMyNjI2M30.0suiaTTRAt9dLdPw27AUsZYKjKNlYYsz2ebB27nkyiA",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Apex Depot\",\r\n    \"shop_id\": 2,\r\n    \"shop\": \"Twilight Treasures\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/v1/warehouse/4",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"v1",
+												"warehouse",
+												"4"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\r\n    \"status_code\": 200,\r\n    \"message\": [\r\n        \"Success\"\r\n    ],\r\n    \"data\": {\r\n        \"warehouse_id\": 4,\r\n        \"name\": \"Apex Depot\",\r\n        \"shop_id\": 2,\r\n        \"shop\": \"\",\r\n        \"status\": \"active\",\r\n        \"created_at\": \"2024-04-28T06:10:08.765154Z\",\r\n        \"updated_at\": \"2024-04-28T22:06:24.356945Z\"\r\n    }\r\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "product",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWduYXR1cmVfa2V5IjoiZTM5NDlmMjA0MWYyZGEyOWY5NzhjYmJmMDA5Y2NkODciLCJ1c2VybmFtZSI6IiIsImJyYW5jaEtleSI6IiIsImV4cCI6MTcxNDM0NTU0OH0.FzcrCAN6kX_65c4DVFc4e9ZTrskhEhYuMNIXYWRbIt8",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/v1/product",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"product"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "AquaBreeze",
+											"disabled": true
+										},
+										{
+											"key": "shop_id",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWduYXR1cmVfa2V5IjoiZTM5NDlmMjA0MWYyZGEyOWY5NzhjYmJmMDA5Y2NkODciLCJ1c2VybmFtZSI6IiIsImJyYW5jaEtleSI6IiIsImV4cCI6MTcxNDMyNjI2M30.0suiaTTRAt9dLdPw27AUsZYKjKNlYYsz2ebB27nkyiA",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/v1/warehouse?shop_id=1",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"v1",
+												"warehouse"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "1",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": "1",
+													"disabled": true
+												},
+												{
+													"key": "name",
+													"value": "4",
+													"disabled": true
+												},
+												{
+													"key": "status",
+													"value": "false",
+													"disabled": true
+												},
+												{
+													"key": "shop_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\r\n    \"status_code\": 200,\r\n    \"message\": [\r\n        \"Success\"\r\n    ],\r\n    \"data\": [\r\n        {\r\n            \"warehouse_id\": 3,\r\n            \"name\": \"Horizon Heights Warehousing\",\r\n            \"shop_id\": 1,\r\n            \"shop\": \"Mystic Emporium\",\r\n            \"status\": true,\r\n            \"created_at\": \"2024-04-28T06:10:08.765154Z\",\r\n            \"updated_at\": \"2024-04-28T06:10:08.765154Z\"\r\n        },\r\n        {\r\n            \"warehouse_id\": 5,\r\n            \"name\": \"Quantum Cargo Center\",\r\n            \"shop_id\": 1,\r\n            \"shop\": \"Mystic Emporium\",\r\n            \"status\": true,\r\n            \"created_at\": \"2024-04-28T06:10:08.765154Z\",\r\n            \"updated_at\": \"2024-04-28T06:10:08.765154Z\"\r\n        },\r\n        {\r\n            \"warehouse_id\": 1,\r\n            \"name\": \"SkyVault Storage Solutions\",\r\n            \"shop_id\": 1,\r\n            \"shop\": \"Mystic Emporium\",\r\n            \"status\": true,\r\n            \"created_at\": \"2024-04-28T06:10:08.765154Z\",\r\n            \"updated_at\": \"2024-04-28T06:10:08.765154Z\"\r\n        }\r\n    ],\r\n    \"pagination\": {\r\n        \"page\": 1,\r\n        \"page_size\": 10,\r\n        \"total\": 3,\r\n        \"total_page\": 1\r\n    }\r\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "stock transfer",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWduYXR1cmVfa2V5IjoiZTM5NDlmMjA0MWYyZGEyOWY5NzhjYmJmMDA5Y2NkODciLCJ1c2VybmFtZSI6IiIsImJyYW5jaEtleSI6IiIsImV4cCI6MTcxNDMyNjI2M30.0suiaTTRAt9dLdPw27AUsZYKjKNlYYsz2ebB27nkyiA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_id\": 1,\r\n    \"destination_warehouse_id\": 1,\r\n    \"source_warehouse_id\": 4,\r\n    \"quantity\": 4,\r\n    \"transfer_date\":\"2024-01-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/stock-transfer",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"stock-transfer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWduYXR1cmVfa2V5IjoiZTM5NDlmMjA0MWYyZGEyOWY5NzhjYmJmMDA5Y2NkODciLCJ1c2VybmFtZSI6IiIsImJyYW5jaEtleSI6IiIsImV4cCI6MTcxNDMyNjI2M30.0suiaTTRAt9dLdPw27AUsZYKjKNlYYsz2ebB27nkyiA",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"product_id\": 1,\r\n    \"destination_warehouse_id\": 1,\r\n    \"source_warehouse_id\": 4,\r\n    \"quantity\": 4,\r\n    \"transfer_date\":\"2024-01-01\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/v1/stock-transfer",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"v1",
+												"stock-transfer"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\r\n    \"status_code\": 200,\r\n    \"message\": [\r\n        \"Success\"\r\n    ],\r\n    \"data\": {\r\n        \"transfer_id\": 26,\r\n        \"product_id\": 1,\r\n        \"source_warehouse_id\": 4,\r\n        \"destination_warehouse_id\": 1,\r\n        \"quantity\": 4,\r\n        \"transfer_date\": \"2024-01-01\",\r\n        \"created_at\": \"2024-04-28T21:46:09.6398401+07:00\",\r\n        \"updated_at\": \"2024-04-28T21:46:09.6398401+07:00\"\r\n    }\r\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Gandhi\",\r\n    \"phone\":\"083123123123\",\r\n    \"email\":\"gandhi@mail.com\",\r\n    \"password\":\"qwerty\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/register",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"register"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Register",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"Gandhi\",\r\n    \"phone\":\"0831231231\",\r\n    \"email\":\"mahatma@mail.com\",\r\n    \"password\":\"qwerty\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/v1/register",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"v1",
+												"register"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\r\n    \"status_code\": 201,\r\n    \"message\": [\r\n        \"Success\"\r\n    ],\r\n    \"data\": {\r\n        \"user_id\": 2,\r\n        \"name\": \"Gandhi\",\r\n        \"email\": \"gandhi@mail.com\",\r\n        \"phone\": \"083123123123\",\r\n        \"created_at\": \"2024-04-28T23:18:49.8593994+07:00\",\r\n        \"updated_at\": \"2024-04-28T23:18:49.8593994+07:00\"\r\n    }\r\n}"
+								}
+							]
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "coba",
+										"value": "Ini ya",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \r\n    \"phone\":\"083123123123\",\r\n    \"password\":\"qwerty\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Register",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"Gandhi\",\r\n    \"phone\":\"0831231231\",\r\n    \"email\":\"mahatma@mail.com\",\r\n    \"password\":\"qwerty\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/v1/register",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"v1",
+												"register"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\r\n    \"status_code\": 201,\r\n    \"message\": [\r\n        \"Success\"\r\n    ],\r\n    \"data\": {\r\n        \"user_id\": 2,\r\n        \"name\": \"Gandhi\",\r\n        \"email\": \"gandhi@mail.com\",\r\n        \"phone\": \"083123123123\",\r\n        \"created_at\": \"2024-04-28T23:18:49.8593994+07:00\",\r\n        \"updated_at\": \"2024-04-28T23:18:49.8593994+07:00\"\r\n    }\r\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "svc-order",
+			"item": [
+				{
+					"name": "order",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\":1,\r\n    \"order_items\":[\r\n        {\r\n            \"product_id\":1,\r\n            \"quantity\":7\r\n        },\r\n        {\r\n            \"product_id\":2,\r\n            \"quantity\":1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/v1/order",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"v1",
+										"order"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_id\":1,\r\n    \"order_items\":[\r\n        {\r\n            \"product_id\":1,\r\n            \"quantity\":1\r\n        },\r\n        {\r\n            \"product_id\":2,\r\n            \"quantity\":1\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/v1/order",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"v1",
+												"order"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\r\n    \"status_code\": 201,\r\n    \"message\": [\r\n        \"Success\"\r\n    ],\r\n    \"data\": {\r\n        \"order_id\": 4,\r\n        \"user_id\": 1,\r\n        \"order_date\": \"2024-04-29T01:52:44.2258612+07:00\",\r\n        \"total_amount\": 31.479999999999997,\r\n        \"status\": \"pending\",\r\n        \"payment_deadline\": \"2024-04-29T01:57:44.2258612+07:00\",\r\n        \"created_at\": \"2024-04-29T01:52:44.2258612+07:00\",\r\n        \"updated_at\": \"2024-04-29T01:52:44.2258612+07:00\",\r\n        \"order_items\": [\r\n            {\r\n                \"order_item_id\": 5,\r\n                \"order_id\": 4,\r\n                \"product_id\": 1,\r\n                \"quantity\": 1,\r\n                \"unit_price\": 10.99,\r\n                \"created_at\": \"2024-04-29T01:52:44.2258612+07:00\",\r\n                \"updated_at\": \"2024-04-29T01:52:44.2258612+07:00\"\r\n            },\r\n            {\r\n                \"order_item_id\": 6,\r\n                \"order_id\": 4,\r\n                \"product_id\": 2,\r\n                \"quantity\": 1,\r\n                \"unit_price\": 20.49,\r\n                \"created_at\": \"2024-04-29T01:52:44.2258612+07:00\",\r\n                \"updated_at\": \"2024-04-29T01:52:44.2258612+07:00\"\r\n            }\r\n        ]\r\n    }\r\n}"
+								}
+							]
+						},
+						{
+							"name": "Payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"order_id\":23\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/v1/order/payment",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"v1",
+										"order",
+										"payment"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Payment",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_id\":1,\r\n    \"order_items\":[\r\n        {\r\n            \"product_id\":1,\r\n            \"quantity\":1\r\n        },\r\n        {\r\n            \"product_id\":2,\r\n            \"quantity\":1\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:3000/v1/order",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"v1",
+												"order"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\r\n    \"status_code\": 201,\r\n    \"message\": [\r\n        \"Success\"\r\n    ],\r\n    \"data\": {\r\n        \"order_id\": 4,\r\n        \"user_id\": 1,\r\n        \"order_date\": \"2024-04-29T01:52:44.2258612+07:00\",\r\n        \"total_amount\": 31.479999999999997,\r\n        \"status\": \"pending\",\r\n        \"payment_deadline\": \"2024-04-29T01:57:44.2258612+07:00\",\r\n        \"created_at\": \"2024-04-29T01:52:44.2258612+07:00\",\r\n        \"updated_at\": \"2024-04-29T01:52:44.2258612+07:00\",\r\n        \"order_items\": [\r\n            {\r\n                \"order_item_id\": 5,\r\n                \"order_id\": 4,\r\n                \"product_id\": 1,\r\n                \"quantity\": 1,\r\n                \"unit_price\": 10.99,\r\n                \"created_at\": \"2024-04-29T01:52:44.2258612+07:00\",\r\n                \"updated_at\": \"2024-04-29T01:52:44.2258612+07:00\"\r\n            },\r\n            {\r\n                \"order_item_id\": 6,\r\n                \"order_id\": 4,\r\n                \"product_id\": 2,\r\n                \"quantity\": 1,\r\n                \"unit_price\": 20.49,\r\n                \"created_at\": \"2024-04-29T01:52:44.2258612+07:00\",\r\n                \"updated_at\": \"2024-04-29T01:52:44.2258612+07:00\"\r\n            }\r\n        ]\r\n    }\r\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
