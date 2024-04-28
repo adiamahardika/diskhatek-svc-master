@@ -3,6 +3,8 @@ package repositories
 import (
 	"context"
 	"svc-master/app/models"
+
+	"gorm.io/gorm/clause"
 )
 
 type warehouseRepository repository
@@ -10,6 +12,7 @@ type warehouseRepository repository
 type WarehouseRepository interface {
 	GetWarehouse(ctx context.Context, filter models.GetWarehouseRequest) ([]models.Warehouse, models.Pagination, error)
 	GetDetailWarehouse(ctx context.Context, id int) (models.Warehouse, error)
+	UpdateWarehouse(request models.Warehouse, id int) (models.Warehouse, error)
 }
 
 func (r *warehouseRepository) GetWarehouse(ctx context.Context, filter models.GetWarehouseRequest) ([]models.Warehouse, models.Pagination, error) {
@@ -66,9 +69,34 @@ func (r *warehouseRepository) GetDetailWarehouse(ctx context.Context, id int) (m
 		warehouse models.Warehouse
 	)
 
-	query := r.Options.Postgres.Table("warehouses").Select("warehouses.*, shops.name AS shop").Joins("JOIN shops ON warehouses.shop_id = shops.shop_id").Order("warehouses.name").Where("warehouses.warehouse_id = ?", id)
+	query := r.Options.Postgres.Table("warehouses").Select("warehouses.*, shops.name AS shop").Joins("JOIN shops ON warehouses.shop_id = shops.shop_id").Where("warehouses.warehouse_id = ?", id)
 
 	error := query.WithContext(ctx).Find(&warehouse).Error
 
 	return warehouse, error
+}
+
+func (u *warehouseRepository) UpdateWarehouse(request models.Warehouse, id int) (models.Warehouse, error) {
+	var (
+		err       error
+		warehouse models.Warehouse
+	)
+
+	columns := map[string]interface{}{
+		"updated_at": request.UpdatedAt,
+	}
+
+	if request.Name != "" {
+		columns["name"] = request.Name
+	}
+	if request.Status != "" {
+		columns["status"] = request.Status
+	}
+	if request.ShopId != 0 {
+		columns["shop_id"] = request.ShopId
+	}
+
+	err = u.Options.Postgres.Table("warehouses").Model(&warehouse).Clauses(clause.Returning{}).Where("warehouses.warehouse_id = ?", id).Updates(columns).Error
+
+	return warehouse, err
 }

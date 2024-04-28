@@ -18,6 +18,7 @@ func Router(e *echo.Echo, controller *controllers.Main) {
 		warehouse := v1.Group("/warehouse")
 		{
 			warehouse.GET("", controller.Warehouse.Get)
+			warehouse.PUT("/:id", controller.Warehouse.Update)
 		}
 
 		product := v1.Group("/product")

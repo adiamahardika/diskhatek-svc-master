@@ -74,5 +74,5 @@ func (c *stockTransferController) Create(ctx echo.Context) error {
 		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
 	}
 
-	return helpers.StandardResponse(ctx, http.StatusOK, []string{constants.SUCCESS_RESPONSE_MESSAGE}, stockTransfer, nil)
+	return helpers.StandardResponse(ctx, http.StatusCreated, []string{constants.SUCCESS_RESPONSE_MESSAGE}, stockTransfer, nil)
 }

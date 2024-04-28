@@ -9,6 +9,7 @@ type shopRepository repository
 
 type ShopRepository interface {
 	GetShop(ctx context.Context, filter models.StandardGetRequest) ([]models.Shop, models.Pagination, error)
+	GetDetailShop(ctx context.Context, id int) (models.Shop, error)
 }
 
 func (r *shopRepository) GetShop(ctx context.Context, filter models.StandardGetRequest) ([]models.Shop, models.Pagination, error) {
@@ -49,4 +50,17 @@ func (r *shopRepository) GetShop(ctx context.Context, filter models.StandardGetR
 	pagination.PageSize = filter.Limit
 
 	return shops, pagination, nil
+}
+
+func (r *shopRepository) GetDetailShop(ctx context.Context, id int) (models.Shop, error) {
+
+	var (
+		shop models.Shop
+	)
+
+	query := r.Options.Postgres.Table("shops").Where("shops.shop_id = ?", id)
+
+	error := query.WithContext(ctx).Find(&shop).Error
+
+	return shop, error
 }
