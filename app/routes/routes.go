@@ -16,22 +16,26 @@ func Router(e *echo.Echo, controller *controllers.Main) {
 
 		shop := v1.Group("/shop")
 		{
+			shop.Use(controller.User.Authentication())
 			shop.GET("", controller.Shop.Get)
 		}
 
 		warehouse := v1.Group("/warehouse")
 		{
+			warehouse.Use(controller.User.Authentication())
 			warehouse.GET("", controller.Warehouse.Get)
 			warehouse.PUT("/:id", controller.Warehouse.Update)
 		}
 
 		product := v1.Group("/product")
 		{
+			product.Use(controller.User.Authentication())
 			product.GET("", controller.Product.Get)
 		}
 
 		stockTransfer := v1.Group("/stock-transfer")
 		{
+			stockTransfer.Use(controller.User.Authentication())
 			stockTransfer.POST("", controller.StockTransfer.Create)
 		}
 	}

@@ -18,6 +18,7 @@ type userUsecase usecase
 type UserUsecase interface {
 	CreateUser(request models.User) (models.User, error)
 	Login(ctx context.Context, request models.User) (models.LoginResponse, error)
+	Authentication(tokenString string) error
 }
 
 func (u *userUsecase) CreateUser(request models.User) (models.User, error) {
@@ -76,4 +77,24 @@ func (u *userUsecase) Login(ctx context.Context, request models.User) (models.Lo
 	}
 
 	return models.LoginResponse{Token: tokenString}, nil
+}
+
+func (u *userUsecase) Authentication(tokenString string) error {
+
+	claims := &models.Claims{}
+	jwtKey := []byte(viper.GetString("TOKEN_SECRET"))
+	token, error := jwt.ParseWithClaims(tokenString, claims,
+		func(token *jwt.Token) (interface{}, error) {
+			return jwtKey, nil
+		})
+	validatorError, _ := error.(*jwt.ValidationError)
+	if token == nil {
+		return customErrors.NewBadRequestError("Please provide token!")
+	} else if validatorError != nil && validatorError.Errors == jwt.ValidationErrorExpired {
+		return customErrors.NewBadRequestError("Your token expired!")
+	} else if error != nil {
+		return customErrors.NewBadRequestError("Your token invalid!")
+	}
+
+	return nil
 }

@@ -17,6 +17,7 @@ type userController controller
 type UserController interface {
 	Create(ctx echo.Context) error
 	Login(ctx echo.Context) error
+	Authentication() echo.MiddlewareFunc
 }
 
 func (c *userController) Create(ctx echo.Context) error {
@@ -111,4 +112,17 @@ func (c *userController) Login(ctx echo.Context) error {
 	}
 
 	return helpers.StandardResponse(ctx, http.StatusOK, []string{constants.SUCCESS_RESPONSE_MESSAGE}, resBody, nil)
+}
+
+func (c *userController) Authentication() echo.MiddlewareFunc {
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(ctx echo.Context) error {
+			token := ctx.Request().Header.Get("token")
+			err := c.Options.UseCases.User.Authentication(token)
+			if err != nil {
+				return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
+			}
+			return next(ctx)
+		}
+	}
 }
