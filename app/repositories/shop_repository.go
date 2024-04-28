@@ -21,7 +21,7 @@ func (r *shopRepository) GetShop(ctx context.Context, filter models.StandardGetR
 
 	offset := (filter.Page - 1) * filter.Limit
 
-	query := r.Options.Postgres.Debug().Table("shops").Order("shops.name")
+	query := r.Options.Postgres.Table("shops").Order("shops.name")
 
 	if filter.Name != "" {
 		query = query.Where("name ILIKE ?", "%"+filter.Name+"%")

@@ -6,7 +6,8 @@ import (
 )
 
 type Main struct {
-	Shop ShopUsecase
+	Shop      ShopUsecase
+	Warehouse WarehouseUsecase
 }
 
 type usecase struct {
@@ -22,7 +23,8 @@ func Init(opts Options) *Main {
 	uscs := &usecase{opts}
 
 	m := &Main{
-		Shop: (*shopUsecase)(uscs),
+		Shop:      (*shopUsecase)(uscs),
+		Warehouse: (*warehouseUsecase)(uscs),
 	}
 
 	return m

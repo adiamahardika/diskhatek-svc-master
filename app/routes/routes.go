@@ -14,5 +14,9 @@ func Router(e *echo.Echo, controller *controllers.Main) {
 		{
 			shop.GET("", controller.Shop.Get)
 		}
+		warehouse := v1.Group("/warehouse")
+		{
+			warehouse.GET("", controller.Warehouse.Get)
+		}
 	}
 }

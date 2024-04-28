@@ -1,9 +1,10 @@
 package models
 
 type StandardGetRequest struct {
-	Name  string `json:"name" query:"name"`
-	Page  int    `json:"page" query:"page"`
-	Limit int    `json:"limit" query:"limit"`
+	Name   string `json:"name" query:"name"`
+	Status string `json:"status" query:"name"`
+	Page   int    `json:"page" query:"page"`
+	Limit  int    `json:"limit" query:"limit"`
 }
 
 type StandardResponse struct {

@@ -6,7 +6,8 @@ import (
 )
 
 type Main struct {
-	Shop ShopController
+	Shop      ShopController
+	Warehouse WarehouseController
 }
 
 type controller struct {
@@ -22,7 +23,8 @@ func Init(opts Options) *Main {
 	ctrlr := &controller{opts}
 
 	m := &Main{
-		Shop: (*shopController)(ctrlr),
+		Shop:      (*shopController)(ctrlr),
+		Warehouse: (*warehouseController)(ctrlr),
 	}
 
 	return m
