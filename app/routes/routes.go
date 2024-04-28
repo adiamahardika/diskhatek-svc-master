@@ -43,6 +43,6 @@ func Router(e *echo.Echo, controller *controllers.Main, usecase *usecases.Main) 
 	}
 
 	scheduler := cron.New()
-	scheduler.AddFunc("*/1 * * * *", usecase.Scheduler.DeleteReservedStock)
+	scheduler.AddFunc("*/5 * * * *", usecase.Scheduler.DeleteReservedStock)
 	scheduler.Start()
 }
