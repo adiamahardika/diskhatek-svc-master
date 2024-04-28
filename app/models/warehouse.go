@@ -8,7 +8,7 @@ type GetWarehouseRequest struct {
 }
 
 type Warehouse struct {
-	WarehouseId int       `json:"warehouse_id"`
+	WarehouseId int       `json:"warehouse_id" gorm:"primaryKey"`
 	Name        string    `json:"name"`
 	ShopId      int       `json:"shop_id"`
 	Shop        string    `json:"shop"`

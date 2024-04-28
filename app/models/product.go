@@ -8,7 +8,7 @@ type GetProductRequest struct {
 }
 
 type Product struct {
-	ProductId      int       `json:"product_id"`
+	ProductId      int       `json:"product_id" gorm:"primaryKey"`
 	Name           string    `json:"name"`
 	Description    string    `json:"description"`
 	Price          float64   `json:"price"`

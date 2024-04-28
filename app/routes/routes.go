@@ -24,5 +24,10 @@ func Router(e *echo.Echo, controller *controllers.Main) {
 		{
 			product.GET("", controller.Product.Get)
 		}
+
+		stockTransfer := v1.Group("/stock-transfer")
+		{
+			stockTransfer.POST("", controller.StockTransfer.Create)
+		}
 	}
 }

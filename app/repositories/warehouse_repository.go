@@ -9,6 +9,7 @@ type warehouseRepository repository
 
 type WarehouseRepository interface {
 	GetWarehouse(ctx context.Context, filter models.GetWarehouseRequest) ([]models.Warehouse, models.Pagination, error)
+	GetDetailWarehouse(ctx context.Context, id int) (models.Warehouse, error)
 }
 
 func (r *warehouseRepository) GetWarehouse(ctx context.Context, filter models.GetWarehouseRequest) ([]models.Warehouse, models.Pagination, error) {
@@ -57,4 +58,17 @@ func (r *warehouseRepository) GetWarehouse(ctx context.Context, filter models.Ge
 	pagination.PageSize = filter.Limit
 
 	return warehouses, pagination, nil
+}
+
+func (r *warehouseRepository) GetDetailWarehouse(ctx context.Context, id int) (models.Warehouse, error) {
+
+	var (
+		warehouse models.Warehouse
+	)
+
+	query := r.Options.Postgres.Table("warehouses").Select("warehouses.*, shops.name AS shop").Joins("JOIN shops ON warehouses.shop_id = shops.shop_id").Order("warehouses.name").Where("warehouses.warehouse_id = ?", id)
+
+	error := query.WithContext(ctx).Find(&warehouse).Error
+
+	return warehouse, error
 }
