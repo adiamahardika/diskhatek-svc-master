@@ -12,6 +12,7 @@ type Main struct {
 	Product       ProductRepository
 	StockTransfer StockTransferRepository
 	Stock         StockRepository
+	User          UserRepository
 }
 
 type repository struct {
@@ -32,6 +33,7 @@ func Init(opts Options) *Main {
 		Product:       (*productRepository)(repo),
 		StockTransfer: (*stockTransferRepository)(repo),
 		Stock:         (*stockRepository)(repo),
+		User:          (*userRepository)(repo),
 	}
 
 	return m

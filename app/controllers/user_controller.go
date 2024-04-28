@@ -5,8 +5,6 @@ import (
 	"svc-master/app/constants"
 	"svc-master/app/helpers"
 	"svc-master/app/models"
-	"time"
-
 	customError "svc-master/pkg/customerrors"
 
 	"github.com/ezartsh/inrequest"
@@ -14,16 +12,16 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type stockTransferController controller
+type userController controller
 
-type StockTrasferController interface {
+type UserController interface {
 	Create(ctx echo.Context) error
 }
 
-func (c *stockTransferController) Create(ctx echo.Context) error {
+func (c *userController) Create(ctx echo.Context) error {
 	var (
-		stockTransfer models.StockTransfer
-		err           error
+		user models.User
+		err  error
 	)
 
 	req, err := inrequest.Json(ctx.Request())
@@ -35,14 +33,10 @@ func (c *stockTransferController) Create(ctx echo.Context) error {
 	schema := validet.NewSchema(
 		mapReq,
 		map[string]validet.Rule{
-			"transfer_date": validet.String{Required: true, Custom: func(v string, path validet.PathKey, look validet.Lookup) error {
-				_, err := time.Parse(time.DateOnly, v)
-				if err != nil {
-					return customError.NewBadRequestError(constants.InvalidDateFormat)
-				}
-
-				return nil
-			}},
+			"phone":    validet.String{Required: true},
+			"email":    validet.String{Required: true, Email: true},
+			"name":     validet.String{Required: true},
+			"password": validet.String{Required: true},
 		},
 		validet.Options{},
 	)
@@ -53,19 +47,19 @@ func (c *stockTransferController) Create(ctx echo.Context) error {
 		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), errorBags.Errors, nil, nil)
 	}
 
-	err = req.ToBind(&stockTransfer)
+	err = req.ToBind(&user)
 	if err != nil {
 		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
 	}
 
-	err = c.Options.UseCases.Validate.IsValidCreateStockTransfers(ctx.Request().Context(), mapReq)
+	err = c.Options.UseCases.Validate.IsValidUser(ctx.Request().Context(), mapReq)
 	if err != nil {
 		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
 	}
-	stockTransfer, err = c.Options.UseCases.StockTransfer.CreateStockTransfer(stockTransfer)
+	user, err = c.Options.UseCases.User.CreateUser(user)
 	if err != nil {
 		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
 	}
 
-	return helpers.StandardResponse(ctx, http.StatusCreated, []string{constants.SUCCESS_RESPONSE_MESSAGE}, stockTransfer, nil)
+	return helpers.StandardResponse(ctx, http.StatusCreated, []string{constants.SUCCESS_RESPONSE_MESSAGE}, user, nil)
 }

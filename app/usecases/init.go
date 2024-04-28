@@ -13,6 +13,7 @@ type Main struct {
 	Product       ProductUsecase
 	StockTransfer StockTransferUsecase
 	Validate      ValidateUsecase
+	User          UserUsecase
 }
 
 type usecase struct {
@@ -34,6 +35,7 @@ func Init(opts Options) *Main {
 		Product:       (*productUsecase)(uscs),
 		StockTransfer: (*stockTransferUsecase)(uscs),
 		Validate:      (*validateUsecase)(uscs),
+		User:          (*userUsecase)(uscs),
 	}
 
 	return m

@@ -10,6 +10,7 @@ type Main struct {
 	Warehouse     WarehouseController
 	Product       ProductController
 	StockTransfer StockTrasferController
+	User          UserController
 }
 
 type controller struct {
@@ -29,6 +30,7 @@ func Init(opts Options) *Main {
 		Warehouse:     (*warehouseController)(ctrlr),
 		Product:       (*productController)(ctrlr),
 		StockTransfer: (*stockTransferController)(ctrlr),
+		User:          (*userController)(ctrlr),
 	}
 
 	return m

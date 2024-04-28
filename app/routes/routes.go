@@ -10,6 +10,9 @@ func Router(e *echo.Echo, controller *controllers.Main) {
 
 	v1 := e.Group("/v1")
 	{
+
+		v1.POST("/register", controller.User.Create)
+
 		shop := v1.Group("/shop")
 		{
 			shop.GET("", controller.Shop.Get)
