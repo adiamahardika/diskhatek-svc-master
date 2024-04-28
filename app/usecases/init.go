@@ -14,6 +14,7 @@ type Main struct {
 	StockTransfer StockTransferUsecase
 	Validate      ValidateUsecase
 	User          UserUsecase
+	Scheduler     SchedulerUsecase
 }
 
 type usecase struct {
@@ -36,6 +37,7 @@ func Init(opts Options) *Main {
 		StockTransfer: (*stockTransferUsecase)(uscs),
 		Validate:      (*validateUsecase)(uscs),
 		User:          (*userUsecase)(uscs),
+		Scheduler:     (*schedulerUsecase)(uscs),
 	}
 
 	return m

@@ -80,7 +80,7 @@ func (m *Main) Init() (err error) {
 
 	m.router = e
 
-	routes.Router(e, m.controller)
+	routes.Router(e, m.controller, m.usecase)
 	return nil
 }
 

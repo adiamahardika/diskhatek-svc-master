@@ -2,11 +2,13 @@ package routes
 
 import (
 	"svc-master/app/controllers"
+	"svc-master/app/usecases"
 
 	"github.com/labstack/echo/v4"
+	"github.com/robfig/cron/v3"
 )
 
-func Router(e *echo.Echo, controller *controllers.Main) {
+func Router(e *echo.Echo, controller *controllers.Main, usecase *usecases.Main) {
 
 	v1 := e.Group("/v1")
 	{
@@ -39,4 +41,8 @@ func Router(e *echo.Echo, controller *controllers.Main) {
 			stockTransfer.POST("", controller.StockTransfer.Create)
 		}
 	}
+
+	scheduler := cron.New()
+	scheduler.AddFunc("*/1 * * * *", usecase.Scheduler.DeleteReservedStock)
+	scheduler.Start()
 }

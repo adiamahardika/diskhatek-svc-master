@@ -5,7 +5,7 @@ import (
 	"math"
 	"svc-master/app/helpers"
 	"svc-master/app/models"
-	customErrors "svc-master/pkg/customerrors"
+	customerrors "svc-master/pkg/customerrors"
 	"time"
 
 	"github.com/golang-jwt/jwt"
@@ -56,7 +56,7 @@ func (u *userUsecase) Login(ctx context.Context, request models.User) (models.Lo
 
 	err = bcrypt.CompareHashAndPassword([]byte(user[0].PasswordHash), []byte(request.Password))
 	if err != nil {
-		return models.LoginResponse{}, customErrors.NewBadRequestError("Password not match!")
+		return models.LoginResponse{}, customerrors.NewBadRequestError("Password not match!")
 	}
 
 	tokenLifespan := viper.GetInt("TOKEN_LIFESPAN")
@@ -89,11 +89,11 @@ func (u *userUsecase) Authentication(tokenString string) error {
 		})
 	validatorError, _ := error.(*jwt.ValidationError)
 	if token == nil {
-		return customErrors.NewBadRequestError("Please provide token!")
+		return customerrors.NewBadRequestError("Please provide token!")
 	} else if validatorError != nil && validatorError.Errors == jwt.ValidationErrorExpired {
-		return customErrors.NewBadRequestError("Your token expired!")
+		return customerrors.NewBadRequestError("Your token expired!")
 	} else if error != nil {
-		return customErrors.NewBadRequestError("Your token invalid!")
+		return customerrors.NewBadRequestError("Your token invalid!")
 	}
 
 	return nil

@@ -76,7 +76,7 @@ func (r *warehouseRepository) GetDetailWarehouse(ctx context.Context, id int) (m
 	return warehouse, error
 }
 
-func (u *warehouseRepository) UpdateWarehouse(request models.Warehouse, id int) (models.Warehouse, error) {
+func (r *warehouseRepository) UpdateWarehouse(request models.Warehouse, id int) (models.Warehouse, error) {
 	var (
 		err       error
 		warehouse models.Warehouse
@@ -96,7 +96,7 @@ func (u *warehouseRepository) UpdateWarehouse(request models.Warehouse, id int) 
 		columns["shop_id"] = request.ShopId
 	}
 
-	err = u.Options.Postgres.Table("warehouses").Model(&warehouse).Clauses(clause.Returning{}).Where("warehouses.warehouse_id = ?", id).Updates(columns).Error
+	err = r.Options.Postgres.Table("warehouses").Model(&warehouse).Clauses(clause.Returning{}).Where("warehouses.warehouse_id = ?", id).Updates(columns).Error
 
 	return warehouse, err
 }
