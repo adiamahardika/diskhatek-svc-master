@@ -14,7 +14,7 @@ type validateUsecase usecase
 type ValidateUsecase interface {
 	IsValidCreateStockTransfers(ctx context.Context, request map[string]any) error
 	IsValidWarehouse(ctx context.Context, request map[string]any) error
-	IsValidUser(ctx context.Context, request map[string]any) error
+	IsValidUser(ctx context.Context, request map[string]any, validateType string) error
 }
 
 func (u *validateUsecase) IsValidCreateStockTransfers(ctx context.Context, request map[string]any) error {
@@ -83,7 +83,7 @@ func (u *validateUsecase) IsValidWarehouse(ctx context.Context, request map[stri
 	return nil
 }
 
-func (u *validateUsecase) IsValidUser(ctx context.Context, request map[string]any) error {
+func (u *validateUsecase) IsValidUser(ctx context.Context, request map[string]any, validateType string) error {
 
 	_, emailPagination, err := u.Options.Repository.User.GetUser(ctx, models.GetUserRequest{
 		Email: fmt.Sprint(request["email"]),
@@ -95,7 +95,7 @@ func (u *validateUsecase) IsValidUser(ctx context.Context, request map[string]an
 	if err != nil {
 		return customErrors.NewInternalServiceError(err.Error())
 	}
-	if emailPagination.Total > 0 {
+	if emailPagination.Total > 0 && validateType == "create" {
 		return customErrors.NewBadRequestErrorf("Duplicate email! %s already registered.", fmt.Sprint(request["email"]))
 	}
 
@@ -109,7 +109,7 @@ func (u *validateUsecase) IsValidUser(ctx context.Context, request map[string]an
 	if err != nil {
 		return customErrors.NewInternalServiceError(err.Error())
 	}
-	if phonePagination.Total > 0 {
+	if phonePagination.Total > 0 && validateType == "create" {
 		return customErrors.NewBadRequestErrorf("Duplicate phone! %s already registered.", fmt.Sprint(request["phone"]))
 	}
 

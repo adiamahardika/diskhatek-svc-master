@@ -14,7 +14,7 @@ type User struct {
 	Email        string    `json:"email"`
 	Phone        string    `json:"phone"`
 	Password     string    `json:"password,omitempty" gorm:"-:all"`
-	PasswordHash string    `json:"password_hash,omitempty" gorm:"->:false;<-:create"`
+	PasswordHash string    `json:"password_hash,omitempty"`
 	CreatedAt    time.Time `json:"created_at"`
 	UpdatedAt    time.Time `json:"updated_at"`
 }

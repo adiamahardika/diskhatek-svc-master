@@ -1,6 +1,8 @@
 github.com/cpuguy83/go-md2man/v2 v2.0.3/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/dgrijalva/jwt-go v3.2.0+incompatible h1:7qlOGliEKZXTDg6OTjfoBKDXWrumCAMpl/TFQ4/5kLM=
+github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
 github.com/ezartsh/inrequest v1.2.0 h1:NLzbKUQ8EdOS4fdTw/3BKQvy5FQ9EnZTERL/lxkOgv4=
 github.com/ezartsh/inrequest v1.2.0/go.mod h1:39QkG2ZtAK9FpTWLVnQmIGHiNXuvYmjlTfnclQ6lcb8=
 github.com/ezartsh/validet v0.5.1 h1:3njZ+q42ciGd4RqCD5+2YYvnq+yyXC4ywTvOWuqx2zM=

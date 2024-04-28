@@ -16,6 +16,7 @@ type userController controller
 
 type UserController interface {
 	Create(ctx echo.Context) error
+	Login(ctx echo.Context) error
 }
 
 func (c *userController) Create(ctx echo.Context) error {
@@ -52,7 +53,7 @@ func (c *userController) Create(ctx echo.Context) error {
 		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
 	}
 
-	err = c.Options.UseCases.Validate.IsValidUser(ctx.Request().Context(), mapReq)
+	err = c.Options.UseCases.Validate.IsValidUser(ctx.Request().Context(), mapReq, "create")
 	if err != nil {
 		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
 	}
@@ -62,4 +63,52 @@ func (c *userController) Create(ctx echo.Context) error {
 	}
 
 	return helpers.StandardResponse(ctx, http.StatusCreated, []string{constants.SUCCESS_RESPONSE_MESSAGE}, user, nil)
+}
+
+func (c *userController) Login(ctx echo.Context) error {
+	var (
+		user    models.User
+		resBody models.LoginResponse
+		err     error
+	)
+
+	req, err := inrequest.Json(ctx.Request())
+	if err != nil {
+		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
+	}
+
+	mapReq := req.ToMap()
+	schema := validet.NewSchema(
+		mapReq,
+		map[string]validet.Rule{
+			"email": validet.String{RequiredIf: &validet.RequiredIf{
+				FieldPath: "phone",
+				Value:     "",
+			}, Email: true},
+			"password": validet.String{Required: true},
+		},
+		validet.Options{},
+	)
+
+	errorBags, err := schema.Validate()
+	if err != nil {
+		err := customError.NewBadRequestError(err.Error())
+		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), errorBags.Errors, nil, nil)
+	}
+
+	err = req.ToBind(&user)
+	if err != nil {
+		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
+	}
+
+	err = c.Options.UseCases.Validate.IsValidUser(ctx.Request().Context(), mapReq, "login")
+	if err != nil {
+		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
+	}
+	resBody, err = c.Options.UseCases.User.Login(ctx.Request().Context(), user)
+	if err != nil {
+		return helpers.StandardResponse(ctx, customError.GetStatusCode(err), []string{err.Error()}, nil, nil)
+	}
+
+	return helpers.StandardResponse(ctx, http.StatusOK, []string{constants.SUCCESS_RESPONSE_MESSAGE}, resBody, nil)
 }
