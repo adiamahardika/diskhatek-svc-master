@@ -8,6 +8,7 @@ import (
 type Main struct {
 	Shop      ShopUsecase
 	Warehouse WarehouseUsecase
+	Product   ProductUsecase
 }
 
 type usecase struct {
@@ -25,6 +26,7 @@ func Init(opts Options) *Main {
 	m := &Main{
 		Shop:      (*shopUsecase)(uscs),
 		Warehouse: (*warehouseUsecase)(uscs),
+		Product:   (*productUsecase)(uscs),
 	}
 
 	return m

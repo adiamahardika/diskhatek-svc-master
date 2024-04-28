@@ -9,6 +9,7 @@ import (
 type Main struct {
 	Shop      ShopRepository
 	Warehouse WarehouseRepository
+	Product   ProductRepository
 }
 
 type repository struct {
@@ -26,6 +27,7 @@ func Init(opts Options) *Main {
 	m := &Main{
 		Shop:      (*shopRepository)(repo),
 		Warehouse: (*warehouseRepository)(repo),
+		Product:   (*productRepository)(repo),
 	}
 
 	return m
